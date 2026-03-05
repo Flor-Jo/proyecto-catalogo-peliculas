@@ -2,9 +2,7 @@
 
 import os
 import shutil
-from pelicula import Pelicula
-
-
+from peliculas import Pelicula
 
 # CLASE CATALOGO
 class CatalogoPelicula:
@@ -43,7 +41,7 @@ class CatalogoPelicula:
 
   
     # AGREGAR PELÍCULA
-     def agregar(self, pelicula: Pelicula):
+    def agregar(self, pelicula: Pelicula):
         peliculas = self._leer_peliculas()
 
         # Evitar duplicados
@@ -55,7 +53,6 @@ class CatalogoPelicula:
 
   
     # LISTAR PELÍCULAS
-      def listar(self):
         peliculas = self._leer_peliculas()
 
         if not peliculas:
@@ -69,20 +66,20 @@ class CatalogoPelicula:
    
     # ELIMINAR CATÁLOGO
         def eliminar_catalogo(self):
-        if os.path.exists(self.ruta_archivo):
+         if os.path.exists(self.ruta_archivo):
             os.remove(self.ruta_archivo)
-        else:
+         else:
             raise FileNotFoundError("El catálogo no existe.")
 
    
     # RESPALDO
-       def crear_respaldo(self):
+    def crear_respaldo(self):
         respaldo = f"{self.nombre}_respaldo.txt"
         shutil.copy(self.ruta_archivo, respaldo)
 
    
     # RESTAURAR
-        def restaurar_respaldo(self):
+    def restaurar_respaldo(self):
         respaldo = f"{self.nombre}_respaldo.txt"
         if os.path.exists(respaldo):
             shutil.copy(respaldo, self.ruta_archivo)
@@ -91,7 +88,7 @@ class CatalogoPelicula:
 
     
     # LISTAR TODOS LOS CATÁLOGOS
-       @staticmethod
+    @staticmethod
     def listar_catalogos():
         print("\nCatálogos disponibles:")
         for archivo in os.listdir():

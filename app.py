@@ -1,5 +1,5 @@
 from catalogo import CatalogoPelicula
-from pelicula import Pelicula
+from peliculas import Pelicula
 
 #FUNCION QUE MUESTRA EL MENU DEL SISTEMA
 def mostrar_menu():
@@ -77,4 +77,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() #vuelve al programa de 0
+    main()           #vuelve al programa de 0
