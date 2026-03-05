@@ -1,7 +1,4 @@
-# =====================================
 # CLASE PELICULA
-# =====================================
-
 class Pelicula:
     """
     Representa una película individual.

@@ -1,15 +1,12 @@
-# =====================================
 # IMPORTACIONES
-# =====================================
+
 import os
 import shutil
 from pelicula import Pelicula
 
 
-# =====================================
-# CLASE CATALOGO
-# =====================================
 
+# CLASE CATALOGO
 class CatalogoPelicula:
     """
     Gestiona un catálogo de películas.
@@ -32,9 +29,8 @@ class CatalogoPelicula:
             with open(self.ruta_archivo, "w", encoding="utf-8"):
                 pass
 
-    # =============================
+  
     # MÉTODO PRIVADO DE LECTURA
-    # =============================
     def _leer_peliculas(self):
         """Lee todas las películas del archivo."""
         peliculas = []
@@ -45,10 +41,9 @@ class CatalogoPelicula:
                     peliculas.append(linea)
         return peliculas
 
-    # =============================
+  
     # AGREGAR PELÍCULA
-    # =============================
-    def agregar(self, pelicula: Pelicula):
+     def agregar(self, pelicula: Pelicula):
         peliculas = self._leer_peliculas()
 
         # Evitar duplicados
@@ -58,10 +53,9 @@ class CatalogoPelicula:
         with open(self.ruta_archivo, "a", encoding="utf-8") as archivo:
             archivo.write(str(pelicula) + "\n")
 
-    # =============================
+  
     # LISTAR PELÍCULAS
-    # =============================
-    def listar(self):
+      def listar(self):
         peliculas = self._leer_peliculas()
 
         if not peliculas:
@@ -72,36 +66,32 @@ class CatalogoPelicula:
         for i, pelicula in enumerate(peliculas, 1):
             print(f"{i}. {pelicula}")
 
-    # =============================
+   
     # ELIMINAR CATÁLOGO
-    # =============================
-    def eliminar_catalogo(self):
+        def eliminar_catalogo(self):
         if os.path.exists(self.ruta_archivo):
             os.remove(self.ruta_archivo)
         else:
             raise FileNotFoundError("El catálogo no existe.")
 
-    # =============================
+   
     # RESPALDO
-    # =============================
-    def crear_respaldo(self):
+       def crear_respaldo(self):
         respaldo = f"{self.nombre}_respaldo.txt"
         shutil.copy(self.ruta_archivo, respaldo)
 
-    # =============================
+   
     # RESTAURAR
-    # =============================
-    def restaurar_respaldo(self):
+        def restaurar_respaldo(self):
         respaldo = f"{self.nombre}_respaldo.txt"
         if os.path.exists(respaldo):
             shutil.copy(respaldo, self.ruta_archivo)
         else:
             raise FileNotFoundError("No existe respaldo para este catálogo.")
 
-    # =============================
+    
     # LISTAR TODOS LOS CATÁLOGOS
-    # =============================
-    @staticmethod
+       @staticmethod
     def listar_catalogos():
         print("\nCatálogos disponibles:")
         for archivo in os.listdir():
